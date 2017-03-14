@@ -1,29 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-{% include head.html %}
-<body>
-  {% include header.html %}
-  <div class="page-wrap">
-    <main role="main">
-      <div class="page-container">
-        {% if page.img %}
-         <img class="page-img" src={{ "/assets/images/" | prepend: site.baseurl | append : page.img}} alt="{{page.title}}">
-        {% endif %}
-        <div class="page-content">
-          <article>
-            <h1 class="page-title">{{page.title}}</h1>
-            {% if page.author %}
-            <div class="date-byline"><span><i class="fa fa-calendar-o" aria-hidden="true"></i> {{page.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{page.author}}</span></div>
-            {% endif %}
-            {{page.content | markdownify}}
-          </article>
-          {% include share.html %}
-          {% include disqus.html %}
-        </div>
-      </div>
-    </main>
+---
+layout: default
+title: Home
+---
+
+<div class='xs-12 topBar hidden'>
+  <p>{{ page.title }}</p>
+</div>
+
+<div class="xs-12 imgBack textCenter vertCenter banner" style='background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) ), url({{ site.url }}/assets/img/{{ page.thumbnail }})'>
+  <div>
+    <a class='caps post-title' href='{{ post.url }}'>{{ page.title }}</a>
+    <p class='meta'>{{ page.date | date_to_long_string }} / by {{ page.author }}</p>
   </div>
-  {% include footer.html %}
-{% include javascripts.html %}
-</body>
-</html>
+</div>
+
+<div class='divider xs-12 topBarTrigger'></div>
+
+<div class='post-wrap'>
+  <h1>{{ page.title }}</h1>
+  <p class='meta'>
+    {{ page.author }} // {{ page.date | date_to_long_string }}
+  </p>
+
+  {{ content }}
+
+</div>

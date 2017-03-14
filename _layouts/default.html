@@ -1,31 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-{% include head.html %}
-<body>
-  {% include header.html %}
-  <div class="page-wrap">
-    <main role="main">
-      <div class="flex-grid">
-        {% for post in site.posts %}
-        <article class="main-articles">
-           {% if post.img %}
-              <a href="{{post.url | prepend: site.baseurl}}"><img class="post-image" src={{ "/assets/images/" | prepend: site.baseurl | append: post.img }} alt="{{post.title}}"></a>
-           {% endif %}
-            <div class="post-content">
-              <div class="wrap-content">
-                <header class="header-article">
-                  <h2><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h2>
-                  <div class="byline"><span><i class="fa fa-calendar-o" aria-hidden="true"></i> {{post.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{post.author}}</span></div>
-                </header>
-                <p>{{post.description}}</p>
-              </div>
-            </div>
-        </article>
-        {% endfor %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{{ page.title }}</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- <Custo></Custo>m CSS -->
+    <link rel="stylesheet" href="{{ site.url }}/assets/css/main.css">
+  </head>
+  <body>
+
+    {% include nav.html %}
+
+
+
+    <main id="panel">
+      <button class='toggle-button'><span class='bar'></span><span class='bar'></span><span class='bar'></span></button>
+      <div class='content-wrap'>
+        {{ content }}
       </div>
     </main>
-  </div>
-{% include footer.html %}
-{% include javascripts.html %}
-</body>
+
+
+      {% include footer.html %}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{{ site.url }}/assets/js/function.js"></script>
+  </body>
 </html>
